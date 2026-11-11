@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#101629" />
+    <meta name="description" content="A friendly number guessing game. Choose a difficulty, follow the clues, and beat your best score." />
+    <title>Number Guessing Challenge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="#home" aria-label="Number Guessing Challenge home">
+          <span class="brand-mark" aria-hidden="true">?</span>
+          <span>PLAY<span class="brand-light">ROOM</span></span>
+        </a>
+        <span class="top-note"><span class="status-dot"></span> A LITTLE GAME OF LOGIC</span>
+      </header>
+
+      <section class="game-card" aria-labelledby="game-title">
+        <div class="card-glow" aria-hidden="true"></div>
+        <div class="eyebrow"><span class="eyebrow-line"></span> THINK. GUESS. WIN.</div>
+        <h1 id="game-title">Number Guessing<br /><span>Challenge</span></h1>
+        <p class="intro-copy">There’s a secret number hiding in here.<br class="desktop-break" /> Can you find it before your chances run out?</p>
+
+        <section id="start-panel" class="panel" aria-label="Game setup">
+          <div class="player-row">
+            <label for="player-name">YOUR NAME <span>(OPTIONAL)</span></label>
+            <input id="player-name" name="playerName" type="text" maxlength="24" autocomplete="given-name" placeholder="What should we call you?" />
+          </div>
+          <div class="setup-row">
+            <label for="difficulty">CHOOSE YOUR LEVEL</label>
+            <div class="select-wrap">
+              <select id="difficulty" name="difficulty">
+                <option value="easy">Easy (1–50 · 10 tries)</option>
+                <option value="medium" selected>Medium (1–100 · 7 tries)</option>
+                <option value="hard">Hard (1–200 · 5 tries)</option>
+              </select>
+              <span class="select-chevron" aria-hidden="true">⌄</span>
+            </div>
+          </div>
+          <div class="rule-strip">
+            <span class="rule-icon" aria-hidden="true">↕</span>
+            <span>Guess a number from <strong id="range-preview">1 to 100</strong></span>
+            <span class="rule-divider"></span>
+            <span id="tries-preview">7 chances</span>
+          </div>
+          <button id="start-button" class="button button-primary" type="button">Start the game <span aria-hidden="true">↗</span></button>
+          <p class="micro-copy">NO HINTS? NO PROBLEM. WE’LL TELL YOU HIGHER OR LOWER.</p>
+        </section>
+
+        <section id="game-panel" class="panel hidden" aria-label="Guess the number">
+          <div class="game-meta">
+            <span id="level-badge" class="level-badge">MEDIUM</span>
+            <span class="range-label">NUMBER RANGE <strong id="range-label">01 — 100</strong></span>
+          </div>
+          <div class="attempts-block">
+            <div class="attempts-label"><span>CHANCES LEFT</span><strong><span id="attempts-left">7</span><span class="attempts-total"> / <span id="attempts-total">7</span></span></strong></div>
+            <div id="attempt-dots" class="attempt-dots" aria-label="7 chances remaining"></div>
+          </div>
+          <form id="guess-form" novalidate>
+            <label class="input-label" for="guess-input">WHAT’S YOUR GUESS?</label>
+            <div class="guess-row">
+              <input id="guess-input" name="guess" type="number" inputmode="numeric" autocomplete="off" placeholder="e.g. 42" aria-describedby="feedback" />
+              <button class="button button-primary submit-button" type="submit">Guess <span aria-hidden="true">→</span></button>
+            </div>
+          </form>
+          <p id="feedback" class="feedback" role="status" aria-live="polite">Make your first guess. You’ve got this.</p>
+          <div class="history-wrap">
+            <span class="history-label">YOUR GUESSES</span>
+            <div id="guess-history" class="guess-history"><span class="empty-history">Your guesses will appear here</span></div>
+          </div>
+          <button id="quit-button" class="text-button" type="button">Start over</button>
+        </section>
+
+        <section id="result-panel" class="panel result-panel hidden" aria-label="Game result" aria-live="polite">
+          <div id="result-icon" class="result-icon" aria-hidden="true">✦</div>
+          <p id="result-kicker" class="result-kicker">WELL PLAYED</p>
+          <h2 id="result-title">You found it!</h2>
+          <p id="result-message" class="result-message">Congratulations!</p>
+          <div class="secret-reveal"><span>THE SECRET NUMBER</span><strong id="secret-number">42</strong></div>
+          <div class="result-stats">
+            <div><span>GUESSES USED</span><strong id="result-guesses">3</strong></div>
+            <div><span>YOUR SCORE</span><strong id="result-score">840</strong></div>
+            <div><span>BEST SCORE</span><strong id="best-score">—</strong></div>
+          </div>
+          <button id="play-again-button" class="button button-primary" type="button">Play again <span aria-hidden="true">↻</span></button>
+          <button id="change-level-button" class="text-button" type="button">Change difficulty</button>
+        </section>
+        <div class="card-footer"><span>BUILT FOR CURIOUS MINDS</span><span>01 <i></i> 03</span></div>
+      </section>
+
+      <footer class="page-footer"><span>TAKE A BREATH. TRUST YOUR INSTINCT.</span><span>© PLAYROOM · 2026</span></footer>
+    </main>
+  </body>
+</html>
